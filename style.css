@@ -22,14 +22,20 @@ h2,
 .form-container,
 form,
 .img-container,
+button,
 .passwd_err {
     display: flex;
 }
 
 h1,
-h2,
-.passwd_err {
+h2 {
     margin-top: 3vh;
+}
+
+h1,
+h2,
+button,
+.passwd_err {
     justify-content: center;
 }
 
@@ -78,7 +84,7 @@ button {
 button {
     background-color: var(--bg-yell);
     width: 60%;
-    margin: 2em auto 0;
+    margin: 5% auto;
 }
 
 .passwd_err {
@@ -106,6 +112,8 @@ button {
     text-align: justify;
 }
 
+/* code snippet of the password page */
+
 /* display : a little more than half the screen of a macbook air*/
 @media screen and (max-width : 1000px) {
     button {
@@ -116,6 +124,6 @@ button {
 /* display mobile */
 @media screen and (max-width : 500px) {
     form {
-        width: 60vw;
+        width: 80vw;
     }
 }
