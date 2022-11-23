@@ -13,6 +13,7 @@
     --bg-dark: #0F0F0F;
     --bg-blue: #5693FA;
     --bg-yell: #F7C616;
+    --bg-red: #DE1F1F;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -20,8 +21,16 @@ h1,
 h2,
 .form-container,
 form,
-.img-container {
+.img-container,
+.passwd_err {
     display: flex;
+}
+
+h1,
+h2,
+.passwd_err {
+    margin-top: 3vh;
+    justify-content: center;
 }
 
 form,
@@ -29,12 +38,6 @@ form,
     border-radius: 2em;
     background-color: var(--bg-blue);
     box-shadow: var(--bg-yell) 0px 0px 0px 6px;
-}
-
-h1,
-h2 {
-    margin-top: 3vh;
-    justify-content: center;
 }
 
 .form-container {
@@ -51,15 +54,20 @@ form {
 }
 
 input {
-    padding: .6em;
     width: 100%;
     outline: none;
 }
 
 input,
-button {
+button,
+.img-container img {
     border-radius: 1em;
     border: none;
+}
+
+input,
+button {
+    padding: .6em;
 }
 
 label,
@@ -69,21 +77,33 @@ button {
 
 button {
     background-color: var(--bg-yell);
-    padding: .6em;
     width: 60%;
     margin: 2em auto 0;
 }
 
-/* code snippet of the homepage */
-.img-container {
-    margin: 14vh auto 0;
-    width: 26%;
-    justify-content: center;
-    overflow: hidden;
+.passwd_err {
+    color: var(--bg-red);
+    margin: 2vh auto -4vh;
 }
 
+/* code snippet of the homepage */
+.img-container {
+    margin: 8vh auto;
+    width: 24em;
+    align-items: center;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.img-container p,
 .img-container img {
-    width: 90%;
+    width: 95%;
+
+}
+
+.img-container p {
+    font-size: 1em;
+    text-align: justify;
 }
 
 /* display : a little more than half the screen of a macbook air*/

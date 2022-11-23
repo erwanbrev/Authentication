@@ -23,16 +23,16 @@ require_once "./pages/register.php";
         <!-- <form action="index.php" method="post"> -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <label>Username</label>
-            <input type="text" placeholder="Pseudo35" required <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+            <input type="text" name="username" placeholder="Pseudo35" required <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
             <span><?php echo $username_err; ?></span>
             <label>Mail</label>
-            <input type="text" placeholder="pseudo35@gmail.com" maxlength="30" required>
+            <input type="text" name="mail" placeholder="pseudo35@gmail.com" maxlength="30" required>
             <label>Password ( Minimum of 8 characters)</label>
             <input type="password" name="password" placeholder="1A!5tv%(" minlength="8" pattern=".{8,}" required <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
             <span><?php echo $password_err; ?></span>
             <label>Confirm your password</label>
             <input type="password" name="confirm_password" minlength="8" pattern=".{8,}" required <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
-            <span><?php echo $confirm_password_err; ?></span>
+            <span"><?php echo $confirm_password_err; ?></span>
             <button type="submit">Send</button>
             <button type="reset">Reset</button>
             <p>Already have an account?

@@ -22,15 +22,16 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 <body>
     <h1>Client's home page</h1>
-    <h2>Hi, <b>
+    <h2>Hello&nbsp;<b>
             <?php echo htmlspecialchars($_SESSION["username"]); ?>
-        </b>. Welcome to our site.</h2>
-    <section class="img-container">
+        </b>! Welcome to our site.</h2>
+    <!-- article available-->
+    <article class="img-container">
         <p>Now you can see the cutest meme of all time.</p>
         <img src="../img/funny-meme-about-people-asking-who-is-a-good-boy-instead-of-how-is-a-good-boy.webp" alt="meme of a dog who's sad because people don't ask him how it is">
-    </section>
+    </article>
     <p>
-        <a href="reset-password.php">Reset your password</a>
+        <a href="passw-reset.php">Reset your password</a>
         <a href="logout.php">Sign Out</a>
     </p>
 </body>
