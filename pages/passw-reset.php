@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $confirm_password = trim($_POST["confirm_password"]);
         if (empty($new_password_err) && ($new_password != $confirm_password)) {
-            $confirm_password_err = "Password didn't match.";
+            $confirm_password_err = "Password did not match.";
         }
     }
 
@@ -69,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mysqli->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

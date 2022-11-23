@@ -33,12 +33,12 @@ form,
 
 h1,
 h2 {
-    margin-top: 6vh;
+    margin-top: 3vh;
     justify-content: center;
 }
 
 .form-container {
-    margin-top: 8vh;
+    margin: 8vh auto;
     width: 100vw;
 }
 

@@ -1,6 +1,6 @@
 <?php
 // Include register file
-require_once "../code/pages/register.php";
+require_once "./pages/register.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@ require_once "../code/pages/register.php";
             <label>Mail</label>
             <input type="text" placeholder="pseudo35@gmail.com" maxlength="30" required>
             <label>Password ( Minimum of 8 characters)</label>
-            <input type="password" name="password" placeholder="1A!5tv%(" minlength="8" pattern=".{8}" required <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+            <input type="password" name="password" placeholder="1A!5tv%(" minlength="8" pattern=".{8,}" required <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
             <span><?php echo $password_err; ?></span>
             <label>Confirm your password</label>
             <input type="password" name="confirm_password" minlength="8" pattern=".{8,}" required <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
