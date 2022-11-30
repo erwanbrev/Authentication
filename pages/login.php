@@ -63,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
                             $_SESSION["mail"] = $mail;
+                            $_SESSION["login_time_stamp"] = time();
 
                             // Redirect user to welcome page
                             header("location: home.php");

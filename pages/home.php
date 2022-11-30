@@ -6,6 +6,13 @@ session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
+} else {
+    // 5 min = 5 x 60s = 300
+    if (time() - $_SESSION["login_time_stamp"] > 10) {
+        session_unset();
+        session_destroy();
+        header("location: login.php");
+    }
 }
 ?>
 <!DOCTYPE html>

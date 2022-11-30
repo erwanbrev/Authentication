@@ -24,7 +24,7 @@ require_once "./pages/register.php";
             <!-- enter your username -->
             <label>Username</label>
             <input type="text" name="username" placeholder="Pseudo35" required <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-            <span><?php echo $username_err; ?></span>
+            <span class="username_err"><?php echo $username_err; ?></span>
             <!-- enter your email -->
             <label>Mail</label>
             <input type="text" name="mail" placeholder="pseudo35@gmail.com" maxlength="30" required <?php echo (!empty($mail_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $mail; ?>">

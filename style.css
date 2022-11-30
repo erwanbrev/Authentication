@@ -94,8 +94,12 @@ button {
     margin: 5% auto;
 }
 
+.username_err,
 .passwd_err {
     color: var(--bg-red);
+}
+
+.passwd_err {
     margin: 2vh auto -4vh;
 }
 
