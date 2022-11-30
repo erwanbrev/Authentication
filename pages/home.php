@@ -23,7 +23,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 <body>
     <h1>Client's home page</h1>
     <h2>Hello&nbsp;<b>
-            <?php echo htmlspecialchars($_SESSION["username"]); ?>
+            <?php
+            echo htmlspecialchars($_SESSION["username"]); ?>
         </b>! Welcome to our site.</h2>
     <!-- article available-->
     <article class="img-container">

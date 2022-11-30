@@ -12,17 +12,17 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 require_once "config.php";
 
 // Define variables and initialize with empty values
-$username = $password = "";
-$username_err = $password_err = $login_err = "";
+$mail = $password = "";
+$mail_err = $password_err = $login_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Check if username is empty
-    if (empty(trim($_POST["username"]))) {
-        $username_err = "Please enter username.";
+    // Check if mail is empty
+    if (empty(trim($_POST["mail"]))) {
+        $mail_err = "Please enter mail.";
     } else {
-        $username = trim($_POST["username"]);
+        $mail = trim($_POST["mail"]);
     }
 
     // Check if password is empty
@@ -33,26 +33,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Validate credentials
-    if (empty($username_err) && empty($password_err)) {
+    if (empty($mail_err) && empty($password_err)) {
         // Prepare a select statement
-        $sql = "SELECT id, username, password FROM users WHERE username = ?";
+        $sql = "SELECT id, username, mail, password FROM users WHERE mail = ?";
 
         if ($stmt = $mysqli->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("s", $param_username);
+            $stmt->bind_param("s", $param_mail);
 
             // Set parameters
-            $param_username = $username;
+            $param_mail = $mail;
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
                 // Store result
                 $stmt->store_result();
 
-                // Check if username exists, if yes then verify password
+                // Check if mail exists, if yes then verify password
                 if ($stmt->num_rows == 1) {
                     // Bind result variables
-                    $stmt->bind_result($id, $username, $hashed_password);
+                    $stmt->bind_result($id, $username, $mail, $hashed_password);
                     if ($stmt->fetch()) {
                         if (password_verify($password, $hashed_password)) {
                             // Password is correct, so start a new session
@@ -62,17 +62,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
+                            $_SESSION["mail"] = $mail;
 
                             // Redirect user to welcome page
                             header("location: home.php");
                         } else {
                             // Password is not valid, display a generic error message
-                            $login_err = "Invalid username or password.";
+                            $login_err = "Invalid mail or password.";
                         }
                     }
                 } else {
-                    // Username doesn't exist, display a generic error message
-                    $login_err = "Invalid username or password.";
+                    // mail doesn't exist, display a generic error message
+                    $login_err = "Invalid mail or password.";
                 }
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
@@ -112,13 +113,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <section class="form-container">
         <!--creation of the form -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <label>Username</label>
-            <input type="text" name="username" placeholder="Pseudo35" required <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-            <span>
-                <?php echo $username_err; ?>
-            </span>
             <label>Mail</label>
-            <input type="text" name="mail" placeholder="pseudo35@gmail.com" maxlength="30" required>
+            <input type="text" name="mail" placeholder="pseudo35@gmail.com" maxlength="30" required <?php echo (!empty($mail_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $mail; ?>">
+            <span>
+                <?php echo $mail_err; ?>
+            </span>
             <label>Password ( Minimum of 8 characters)</label>
             <input type="password" name="password" placeholder="1A!5tv%(" minlength="8" required <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
             <span>

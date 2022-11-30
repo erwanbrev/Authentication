@@ -27,7 +27,8 @@ require_once "./pages/register.php";
             <span><?php echo $username_err; ?></span>
             <!-- enter your email -->
             <label>Mail</label>
-            <input type="text" name="mail" placeholder="pseudo35@gmail.com" maxlength="30" required>
+            <input type="text" name="mail" placeholder="pseudo35@gmail.com" maxlength="30" required <?php echo (!empty($mail_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $mail; ?>">
+            <span><?php echo $mail_err; ?></span>
             <!-- enter your password -->
             <label>Password ( Minimum of 8 characters)</label>
             <input type="password" name="password" placeholder="1A!5tv%(" minlength="8" required <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">

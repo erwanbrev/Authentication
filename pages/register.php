@@ -3,8 +3,8 @@
 require_once "config.php";
 
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
+$username = $mail = $password = $confirm_password = "";
+$username_err = $mail_err = $password_err = $confirm_password_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -44,6 +44,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    // Validate mail
+    if (empty(trim($_POST["mail"]))) {
+        $mail_err = "Please enter a valid mail";
+    } elseif (!filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
+        $mail_err = "Invalid email format";
+    } else {
+        $mail = trim($_POST["mail"]);
+    }
+
     // Validate password
     if (empty(trim($_POST["password"]))) {
         $password_err = "Please enter a password.";
@@ -64,17 +73,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check input errors before inserting in database
-    if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
-
+    if (empty($username_err) && empty($mail_err) && empty($password_err) && empty($confirm_password_err)) {
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        $sql = "INSERT INTO users (username, mail, password) VALUES (?, ?, ?)";
 
         if ($stmt = $mysqli->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("ss", $param_username, $param_password);
+            $stmt->bind_param("sss", $param_username, $param_mail, $param_password);
 
             // Set parameters
             $param_username = $username;
+            $param_mail = $mail;
             $param_password = password_hash($password, PASSWORD_BCRYPT); // Creates a password hash
 
             // Attempt to execute the prepared statement
