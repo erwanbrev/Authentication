@@ -20,24 +20,28 @@ require_once "./pages/register.php";
     <!-- creation of a section to contain the form -->
     <section class="form-container">
         <!--creation of the form -->
-        <!-- <form action="index.php" method="post"> -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <!-- enter your username -->
             <label>Username</label>
             <input type="text" name="username" placeholder="Pseudo35" required <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
             <span><?php echo $username_err; ?></span>
+            <!-- enter your email -->
             <label>Mail</label>
             <input type="text" name="mail" placeholder="pseudo35@gmail.com" maxlength="30" required>
+            <!-- enter your password -->
             <label>Password ( Minimum of 8 characters)</label>
-            <input type="password" name="password" placeholder="1A!5tv%(" minlength="8" pattern=".{8,}" required <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+            <input type="password" name="password" placeholder="1A!5tv%(" minlength="8" required <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
             <span><?php echo $password_err; ?></span>
+            <!-- how to confirm your password -->
             <label>Confirm your password</label>
-            <input type="password" name="confirm_password" minlength="8" pattern=".{8,}" required <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+            <input type="password" name="confirm_password" minlength="8" required <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
             <span"><?php echo $confirm_password_err; ?></span>
-            <button type="submit">Send</button>
-            <button type="reset">Reset</button>
-            <p>Already have an account?
-                <a href="./pages/login.php">Login here</a>
-            </p>
+                <button type="submit">Send</button>
+                <button type="reset">Reset</button>
+                <!-- page's redirection -->
+                <p>Already have an account?
+                    <a href="./pages/login.php">Login here</a>
+                </p>
         </form>
     </section>
 
