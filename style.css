@@ -17,26 +17,29 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* one time declaration of a parameter for several classes */
 h1,
 h2,
 .form-container,
 form,
 .img-container,
 button,
-.passwd_err {
+.passwd_err,
+.reset-pwd-p {
     display: flex;
-}
-
-h1,
-h2 {
-    margin-top: 3vh;
 }
 
 h1,
 h2,
 button,
-.passwd_err {
+.passwd_err,
+.reset-pwd-p {
     justify-content: center;
+}
+
+h1,
+h2 {
+    margin-top: 3vh;
 }
 
 form,
@@ -46,22 +49,21 @@ form,
     box-shadow: var(--bg-yell) 0px 0px 0px 6px;
 }
 
+form,
+.form-container {
+    flex-direction: column;
+}
+
 .form-container {
     margin: 8vh auto;
     width: 100vw;
 }
 
 form {
-    flex-direction: column;
     width: 45vw;
     padding: 2em;
     margin: auto;
     line-height: 2em;
-}
-
-input {
-    width: 100%;
-    outline: none;
 }
 
 input,
@@ -69,6 +71,11 @@ button,
 .img-container img {
     border-radius: 1em;
     border: none;
+}
+
+input {
+    width: 100%;
+    outline: none;
 }
 
 input,
@@ -93,6 +100,12 @@ button {
 }
 
 /* code snippet of the homepage */
+
+.img-container p,
+.img-container img {
+    width: 95%;
+}
+
 .img-container {
     margin: 8vh auto;
     width: 24em;
@@ -101,18 +114,15 @@ button {
     padding: 1em;
 }
 
-.img-container p,
-.img-container img {
-    width: 95%;
-
-}
-
 .img-container p {
     font-size: 1em;
     text-align: justify;
 }
 
-/* code snippet of the password page */
+/* code snippet of the reset-password page */
+#reset-container {
+    margin: 4% auto;
+}
 
 /* display : a little more than half the screen of a macbook air*/
 @media screen and (max-width : 1000px) {

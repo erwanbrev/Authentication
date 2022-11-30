@@ -111,7 +111,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- creation of a section to contain the form -->
     <section class="form-container">
         <!--creation of the form -->
-        <!-- <form action="index.php" method="post"> -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <label>Username</label>
             <input type="text" name="username" placeholder="Pseudo35" required <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
