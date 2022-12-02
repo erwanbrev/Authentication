@@ -50,7 +50,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (!filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
         $mail_err = "Invalid email format";
     } else {
+        //add old else below to test the code
         $mail = trim($_POST["mail"]);
+        // Prepare a select statement
+        $sql = "SELECT id FROM users WHERE mail = ?";
+
+        if ($stmt = $mysqli->prepare($sql)) {
+            // Bind variables to the prepared statement as parameters
+            $stmt->bind_param("s", $param_mail);
+
+            // Set parameters
+            $param_mail = trim($_POST["mail"]);
+
+            // Attempt to execute the prepared statement
+            if ($stmt->execute()) {
+                // store result
+                $stmt->store_result();
+
+                if ($stmt->num_rows == 1) {
+                    $mail_err = "This mail is already taken.";
+                } else {
+                    $mail = trim($_POST["mail"]);
+                }
+            }
+        }
     }
 
     // Validate password

@@ -14,7 +14,6 @@ require_once "config.php";
 // Define variables and initialize with empty values
 $mail = $password = "";
 $mail_err = $password_err = $login_err = "";
-
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
