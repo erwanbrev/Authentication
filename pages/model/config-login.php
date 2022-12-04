@@ -4,7 +4,7 @@ session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("location: ../home.php");
+    header("location: ../view/home.php");
     exit;
 }
 
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["login_time_stamp"] = time();
 
                             // Redirect user to welcome page
-                            header("location: ../home.php");
+                            header("location: ../view/home.php");
                         } else {
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid mail or password.";

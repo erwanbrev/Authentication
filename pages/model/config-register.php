@@ -1,7 +1,6 @@
 <?php
 // Include config file
 require_once "config.php";
-
 // Define variables and initialize with empty values
 $username = $mail = $password = $confirm_password = "";
 $username_err = $mail_err = $password_err = $confirm_password_err = "";
@@ -112,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
                 // Redirect to login page
-                header("location: ../login.php");
+                header("location: ../view/login.php");
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }

@@ -1,6 +1,6 @@
 <?php
 // Include config file
-require_once "./model/config-passw-reset.php";
+require_once "../model/config-passw-reset.php";
 ?>
 
 
@@ -10,7 +10,7 @@ require_once "./model/config-passw-reset.php";
 <head>
     <meta charset="UTF-8">
     <title>Reset Password</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../model/style.css">
 </head>
 
 <body>
@@ -30,7 +30,7 @@ require_once "./model/config-passw-reset.php";
             </div>
             <div>
                 <button type="submit" value="Submit">Reset</button>
-                <a href="home.php">Cancel</a>
+                <a href="../view/home.php">Cancel</a>
             </div>
         </form>
     </section>

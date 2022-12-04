@@ -1,6 +1,6 @@
 <?php
 // Include config file
-require_once "./model/config-home.php";
+require_once "../model/config-home.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@ require_once "./model/config-home.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client's home page</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../model/style.css">
 
 </head>
 
@@ -23,11 +23,11 @@ require_once "./model/config-home.php";
     <!-- article available-->
     <article class="img-container">
         <p>Now you can see the cutest meme of all time.</p>
-        <img src="../img/funny-meme-about-people-asking-who-is-a-good-boy-instead-of-how-is-a-good-boy.webp" alt="meme of a dog who's sad because people don't ask him how it is">
+        <img src="../../img/funny-meme-about-people-asking-who-is-a-good-boy-instead-of-how-is-a-good-boy.webp" alt="meme of a dog who's sad because people don't ask him how it is">
     </article>
     <p>
         <a href="passw-reset.php">Reset your password</a>
-        <a href="logout.php">Sign Out</a>
+        <a href="../model/logout.php">Sign Out</a>
     </p>
 </body>
 

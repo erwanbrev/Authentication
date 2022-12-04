@@ -1,6 +1,7 @@
 <?php
 // Include register file
-require_once "./pages/model/config-register.php";
+// require_once "./pages/model/config.php";
+require_once "../model/config-register.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@ require_once "./pages/model/config-register.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer authentication</title>
     <!-- link to connect the design's file to the rest of the code -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../model/style.css">
 </head>
 
 <body>
@@ -32,16 +33,16 @@ require_once "./pages/model/config-register.php";
             <!-- enter your password -->
             <label>Password ( Minimum of 8 characters)</label>
             <input type="password" name="password" placeholder="1A!5tv%(" minlength="8" required <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
-            <span><?php echo $password_err; ?></span>
+            <span class="username_err"><?php echo $password_err; ?></span>
             <!-- how to confirm your password -->
             <label>Confirm your password</label>
             <input type="password" name="confirm_password" minlength="8" required <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
-            <span"><?php echo $confirm_password_err; ?></span>
+            <span class="username_err"><?php echo $confirm_password_err; ?></span>
                 <button type="submit">Send</button>
                 <button type="reset">Reset</button>
                 <!-- page's redirection -->
                 <p>Already have an account?
-                    <a href="./pages/login.php">Login here</a>
+                    <a href="../view/login.php">Login here</a>
                 </p>
         </form>
     </section>

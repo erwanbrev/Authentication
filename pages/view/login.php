@@ -1,6 +1,6 @@
 <?php
 // Include config file
-require_once "./model/config-login.php";
+require_once "../model/config-login.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@ require_once "./model/config-login.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer authentication</title>
     <!-- link to connect the design's file to the rest of the code -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../model/style.css">
 </head>
 
 <body>
@@ -34,13 +34,13 @@ require_once "./model/config-login.php";
             </span>
             <label>Password ( Minimum of 8 characters)</label>
             <input type="password" name="password" placeholder="1A!5tv%(" minlength="8" required <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
-            <span>
+            <span class="username_err">
                 <?php echo $password_err; ?>
             </span>
             <button type="submit" value="login">Send</button>
             <button type="reset" value="reset">Reset</button>
             <p>Don't have an account?
-                <a href="../index.php">Sign up here</a>
+                <a href="../view/index.php">Sign up here</a>
             </p>
         </form>
     </section>
