@@ -1,6 +1,6 @@
 <?php
 // Include register file
-require_once "./pages/register.php";
+require_once "./pages/model/config-register.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

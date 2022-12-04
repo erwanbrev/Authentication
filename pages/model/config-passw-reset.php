@@ -4,7 +4,7 @@ session_start();
 
 // Check if the user is logged in, otherwise redirect to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: login.php");
+    header("location: ../login.php");
     exit;
 }
 
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($stmt->execute()) {
                 // Password updated successfully. Destroy the session, and redirect to login page
                 session_destroy();
-                header("location: login.php");
+                header("location: ../login.php");
                 exit();
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
@@ -69,38 +69,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mysqli->close();
 }
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Reset Password</title>
-    <link rel="stylesheet" href="../style.css">
-</head>
-
-<body>
-    <section class="form-container">
-        <h2>Reset Password</h2>
-        <p class="reset-pwd-p">Please fill out this form to reset your password.</p>
-        <form id="reset-container" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div>
-                <label>Ur new password</label>
-                <input type="password" name="new_password" <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
-                <span><?php echo $new_password_err; ?></span>
-            </div>
-            <div>
-                <label>Can you confirm ur password</label>
-                <input type="password" name="confirm_password" <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
-                <span><?php echo $confirm_password_err; ?></span>
-            </div>
-            <div>
-                <button type="submit" value="Submit">Reset</button>
-                <a href="home.php">Cancel</a>
-            </div>
-        </form>
-    </section>
-</body>
-
-</html>
