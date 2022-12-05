@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-light: #FAFAFA;
+    --bg-dark: #0F0F0F;
+    --bg-blue: #5693FA;
+    --bg-yell: #F7C616;
+    --bg-red: #DE1F1F;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* one time declaration of a parameter for several classes */
+h1,
+h2,
+.form-container,
+.img-container,
+.main-container,
+.left-main-container,
+.tab-admin-panel,
+.inside-table-admin-panel,
+.space-btw-td,
+.form-btn,
+.passwd_err,
+.reset-pwd-p,
+.admin-btn {
+    display: flex;
+}
+
+h1,
+h2,
+.form-btn,
+.passwd_err,
+.reset-pwd-p,
+.admin-btn {
+    justify-content: center;
+}
+
+h1,
+h2 {
+    margin-top: 3vh;
+}
+
+.form,
+.img-container,
+.tab-admin-panel {
+    border-radius: 2em;
+    background-color: var(--bg-blue);
+    box-shadow: var(--bg-yell) 0px 0px 0px 6px;
+}
+
+/* display of the options in the vertical direction (of a column) */
+.form,
+.form-container,
+.img-container,
+.inside-table-admin-panel {
+    flex-direction: column;
+}
+
+.form-container,
+.tab-admin-panel {
+    margin: 8vh auto;
+    width: 100vw;
+}
+
+/* added a line height and an inner margin of 2em */
+.form,
+.tab-admin-panel {
+    padding: 2em;
+    line-height: 2em;
+}
+
+.form {
+    width: 45vw;
+    margin: auto;
+}
+
+/* Rounding of the edges of the 1em structure and visual erasure of the border */
+input,
+.form-btn,
+.admin-btn,
+.img-container img {
+    border-radius: 1em;
+    border: none;
+}
+
+input {
+    width: 100%;
+    outline: none;
+}
+
+input,
+.form-btn,
+.admin-btn {
+    padding: .6em;
+}
+
+/* bold font */
+label,
+.form-btn {
+    font-weight: bold;
+}
+
+.form-btn,
+.admin-btn {
+    background-color: var(--bg-yell);
+}
+
+.form-btn {
+    width: 60%;
+    margin: 5% auto;
+}
+
+.username_err,
+.passwd_err {
+    color: var(--bg-red);
+}
+
+.passwd_err {
+    margin: 2vh auto -4vh;
+}
+
+/* code snippet of the homepage */
+
+.img-container p,
+.img-container img {
+    width: 95%;
+}
+
+.img-container,
+.left-main-container {
+    margin: 6vh auto;
+    padding: 1em;
+}
+
+.img-container {
+    width: 24em;
+    align-items: center;
+}
+
+.img-container p {
+    font-size: 1em;
+    text-align: justify;
+}
+
+.main-container {
+    width: 100vw;
+    flex-direction: row;
+}
+
+.left-main-container {
+    flex-direction: column;
+    height: min-content;
+}
+
+/* code snippet of the reset-password page */
+#reset-container {
+    margin: 4% auto;
+}
+
+/* code snippet of the admin-panel page */
+.tab-admin-panel tr,
+.inside-table-admin-panel tr {
+    text-align: center;
+}
+
+.tab-admin-panel {
+    width: 80vw;
+}
+
+.inside-table-admin-panel {
+    width: 100%;
+}
+
+.space-btw-td {
+    justify-content: space-evenly;
+}
+
+.space-btw-td a {
+    color: var(--bg-yell);
+    text-decoration: none;
+}
+
+.space-btw-td a:hover {
+    text-decoration: underline;
+}
+
+.space-btw-td a:hover,
+.admin-btn:hover {
+    opacity: .7;
+}
+
+.admin-btn {
+    margin: 2em auto;
+}
+
+.admin-btn a {
+    color: var(--bg-dark);
+    text-decoration: none;
+}
+
+.admin-btn:hover {
+    transform: translateY(2px);
+}
+
+/* display : a little more than half the screen of a macbook air*/
+@media screen and (max-width : 1000px) {
+    .form-btn {
+        width: 100%;
+    }
+}
+
+/* display mobile */
+@media screen and (max-width : 500px) {
+    .form {
+        width: 80vw;
+    }
+}
