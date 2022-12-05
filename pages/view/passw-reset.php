@@ -17,7 +17,7 @@ require_once "../model/config-passw-reset.php";
     <section class="form-container">
         <h2>Reset Password</h2>
         <p class="reset-pwd-p">Please fill out this form to reset your password.</p>
-        <form id="reset-container" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form id="reset-container" class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div>
                 <label>Ur new password</label>
                 <input type="password" name="new_password" <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">

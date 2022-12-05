@@ -17,12 +17,20 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    background-color: var(--bg-dark);
+    color: var(--bg-light);
+}
+
 /* one time declaration of a parameter for several classes */
 h1,
 h2,
 .form-container,
-form,
+.form,
 .img-container,
+.tab-admin-panel,
+.inside-table-admin-panel,
+.space-btw-td,
 button,
 .passwd_err,
 .reset-pwd-p {
@@ -42,30 +50,41 @@ h2 {
     margin-top: 3vh;
 }
 
-form,
-.img-container {
+.form,
+.img-container,
+.tab-admin-panel {
     border-radius: 2em;
     background-color: var(--bg-blue);
     box-shadow: var(--bg-yell) 0px 0px 0px 6px;
 }
 
-form,
-.form-container {
+/* display of the options in the vertical direction (of a column) */
+.form,
+.form-container,
+.img-container,
+.inside-table-admin-panel {
     flex-direction: column;
 }
 
-.form-container {
+.form-container,
+.tab-admin-panel {
     margin: 8vh auto;
     width: 100vw;
 }
 
-form {
-    width: 45vw;
+/* added a line height and an inner margin of 2em */
+.form,
+.tab-admin-panel {
     padding: 2em;
-    margin: auto;
     line-height: 2em;
 }
 
+.form {
+    width: 45vw;
+    margin: auto;
+}
+
+/* Rounding of the edges of the 1em structure and visual erasure of the border */
 input,
 button,
 .img-container img {
@@ -82,7 +101,7 @@ input,
 button {
     padding: .6em;
 }
-
+/* bold font */
 label,
 button {
     font-weight: bold;
@@ -114,7 +133,6 @@ button {
     margin: 8vh auto;
     width: 24em;
     align-items: center;
-    flex-direction: column;
     padding: 1em;
 }
 
@@ -128,6 +146,34 @@ button {
     margin: 4% auto;
 }
 
+/* code snippet of the admin-panel page */
+.tab-admin-panel tr,
+.inside-table-admin-panel tr {
+    text-align: center;
+}
+
+.tab-admin-panel {
+    width: 80vw;
+}
+
+.inside-table-admin-panel {
+    width: 100%;
+}
+
+.space-btw-td {
+    justify-content: space-evenly;
+}
+
+.space-btw-td a {
+    color: var(--bg-yell);
+    text-decoration: none;
+}
+
+.space-btw-td a:hover {
+    opacity: .7;
+    text-decoration: underline;
+}
+
 /* display : a little more than half the screen of a macbook air*/
 @media screen and (max-width : 1000px) {
     button {
@@ -137,7 +183,7 @@ button {
 
 /* display mobile */
 @media screen and (max-width : 500px) {
-    form {
+    .form {
         width: 80vw;
     }
 }

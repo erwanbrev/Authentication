@@ -21,7 +21,7 @@ require_once "../model/config-register.php";
     <!-- creation of a section to contain the form -->
     <section class="form-container">
         <!--creation of the form -->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <!-- enter your username -->
             <label>Username</label>
             <input type="text" name="username" placeholder="Pseudo35" required <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
