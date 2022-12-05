@@ -38,8 +38,8 @@ require_once "../model/config-register.php";
             <label>Confirm your password</label>
             <input type="password" name="confirm_password" minlength="8" required <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
             <span class="username_err"><?php echo $confirm_password_err; ?></span>
-                <button type="submit">Send</button>
-                <button type="reset">Reset</button>
+                <button class="form-btn" type="submit">Send</button>
+                <button class="form-btn" type="reset">Reset</button>
                 <!-- page's redirection -->
                 <p>Already have an account?
                     <a href="../view/login.php">Login here</a>

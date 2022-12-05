@@ -17,31 +17,29 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* body {
-    background-color: var(--bg-dark);
-    color: var(--bg-light);
-} */
-
 /* one time declaration of a parameter for several classes */
 h1,
 h2,
 .form-container,
-.form,
 .img-container,
+.main-container,
+.left-main-container,
 .tab-admin-panel,
 .inside-table-admin-panel,
 .space-btw-td,
-button,
+.form-btn,
 .passwd_err,
-.reset-pwd-p {
+.reset-pwd-p,
+.admin-btn {
     display: flex;
 }
 
 h1,
 h2,
-button,
+.form-btn,
 .passwd_err,
-.reset-pwd-p {
+.reset-pwd-p,
+.admin-btn {
     justify-content: center;
 }
 
@@ -86,7 +84,8 @@ h2 {
 
 /* Rounding of the edges of the 1em structure and visual erasure of the border */
 input,
-button,
+.form-btn,
+.admin-btn,
 .img-container img {
     border-radius: 1em;
     border: none;
@@ -98,17 +97,23 @@ input {
 }
 
 input,
-button {
+.form-btn,
+.admin-btn {
     padding: .6em;
 }
+
 /* bold font */
 label,
-button {
+.form-btn {
     font-weight: bold;
 }
 
-button {
+.form-btn,
+.admin-btn {
     background-color: var(--bg-yell);
+}
+
+.form-btn {
     width: 60%;
     margin: 5% auto;
 }
@@ -129,16 +134,30 @@ button {
     width: 95%;
 }
 
+.img-container,
+.left-main-container {
+    margin: 6vh auto;
+    padding: 1em;
+}
+
 .img-container {
-    margin: 8vh auto;
     width: 24em;
     align-items: center;
-    padding: 1em;
 }
 
 .img-container p {
     font-size: 1em;
     text-align: justify;
+}
+
+.main-container {
+    width: 100vw;
+    flex-direction: row;
+}
+
+.left-main-container {
+    flex-direction: column;
+    height: min-content;
 }
 
 /* code snippet of the reset-password page */
@@ -170,13 +189,30 @@ button {
 }
 
 .space-btw-td a:hover {
-    opacity: .7;
     text-decoration: underline;
+}
+
+.space-btw-td a:hover,
+.admin-btn:hover {
+    opacity: .7;
+}
+
+.admin-btn {
+    margin: 2em auto;
+}
+
+.admin-btn a {
+    color: var(--bg-dark);
+    text-decoration: none;
+}
+
+.admin-btn:hover {
+    transform: translateY(2px);
 }
 
 /* display : a little more than half the screen of a macbook air*/
 @media screen and (max-width : 1000px) {
-    button {
+    .form-btn {
         width: 100%;
     }
 }

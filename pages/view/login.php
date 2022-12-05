@@ -37,8 +37,8 @@ require_once "../model/config-login.php";
             <span class="username_err">
                 <?php echo $password_err; ?>
             </span>
-            <button type="submit" value="login">Send</button>
-            <button type="reset" value="reset">Reset</button>
+            <button class="form-btn" type="submit" value="login">Send</button>
+            <button class="form-btn" type="reset" value="reset">Reset</button>
             <p>Don't have an account?
                 <a href="../view/index.php">Sign up here</a>
             </p>

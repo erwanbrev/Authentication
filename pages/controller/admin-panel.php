@@ -10,7 +10,9 @@
 <body>
     <div>
         <h2>Users Details</h2>
-        <a class="" href="create-users.php"> Add New User</a>
+        <button class="admin-btn">
+            <a href="../view/admin-panel-create.php"> Add New User</a>
+        </button>
     </div>
     <section class="tab-admin-panel">
         <section class="inside-table-admin-panel">
@@ -44,9 +46,9 @@
                                     echo "<td>" . substr($row['password'], 0, 10) . "</td>";
                                     echo "<td>" . $row['role'] . "</td>";
                                     echo "<td class=\"space-btw-td\">";
-                                    echo '<a href="read-users.php?id=' . $row['id'] . 'title="Read Record" data-toggle="tooltip"><span>Read</span></a>';
-                                    echo '<a href="update-users.php?id=' . $row['id'] . ' title="Update Record" data-toggle="tooltip"><span>Update</span></a>';
-                                    echo '<a href="delete-users.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span>Delete</span></a>';
+                                    echo '<a href="../view/admin-panel-read.php?id=' . $row['id'] . 'title="Read Record" data-toggle="tooltip"><span>Read</span></a>';
+                                    echo '<a href="../view/admin-panel-update.php?id=' . $row['id'] . ' title="Update Record" data-toggle="tooltip"><span>Update</span></a>';
+                                    echo '<a href="../view/admin-panel-delete.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span>Delete</span></a>';
                                     echo "</td>";
                                     echo "</tr>";
                                 }

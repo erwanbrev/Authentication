@@ -20,15 +20,18 @@ require_once "../model/config-home.php";
             <?php
             echo htmlspecialchars($_SESSION["username"]); ?>
         </b>! Welcome to our site.</h2>
-    <!-- article available-->
-    <article class="img-container">
-        <p>Now you can see the cutest meme of all time.</p>
-        <img src="../../img/funny-meme-about-people-asking-who-is-a-good-boy-instead-of-how-is-a-good-boy.webp" alt="meme of a dog who's sad because people don't ask him how it is">
-    </article>
-    <p>
-        <a href="passw-reset.php">Reset your password</a>
-        <a href="../model/logout.php">Sign Out</a>
-    </p>
+    <section class="main-container">
+        <section class="left-main-container">
+            <a href="../controller/admin-panel.php">Redirect to admin panel</a>
+            <a href="passw-reset.php">Reset your password</a>
+            <a href="../model/logout.php">Log Out</a>
+        </section>
+        <!-- article available-->
+        <article class="img-container">
+            <p>Now you can see the cutest meme of all time.</p>
+            <img src="../../img/funny-meme-about-people-asking-who-is-a-good-boy-instead-of-how-is-a-good-boy.webp" alt="meme of a dog who's sad because people don't ask him how it is">
+        </article>
+    </section>
 </body>
 
 </html>
