@@ -1,7 +1,6 @@
 <?php
 // Include register file
-// require_once "./pages/model/config.php";
-require_once "../model/config-register.php";
+require "../model/config-register.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +27,7 @@ require_once "../model/config-register.php";
             <span class="username_err"><?php echo $username_err; ?></span>
             <!-- enter your email -->
             <label>Mail</label>
-            <input type="text" name="mail" placeholder="pseudo35@gmail.com" maxlength="30" required <?php echo (!empty($mail_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $mail; ?>">
+            <input type="email" name="mail" placeholder="pseudo35@gmail.com" maxlength="30" required <?php echo (!empty($mail_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $mail; ?>">
             <span><?php echo $mail_err; ?></span>
             <!-- enter your password -->
             <label>Password ( Minimum of 8 characters)</label>
@@ -38,12 +37,12 @@ require_once "../model/config-register.php";
             <label>Confirm your password</label>
             <input type="password" name="confirm_password" minlength="8" required <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
             <span class="username_err"><?php echo $confirm_password_err; ?></span>
-                <button class="form-btn" type="submit">Send</button>
-                <button class="form-btn" type="reset">Reset</button>
-                <!-- page's redirection -->
-                <p>Already have an account?
-                    <a href="../view/login.php">Login here</a>
-                </p>
+            <button class="form-btn" type="submit">Send</button>
+            <button class="form-btn" type="reset">Reset</button>
+            <!-- page's redirection -->
+            <p>Already have an account?
+                <a href="../view/login.php">Login here</a>
+            </p>
         </form>
     </section>
 

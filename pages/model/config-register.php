@@ -72,6 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $mail = trim($_POST["mail"]);
                 }
             }
+            // Close statement
+            $stmt->close();
         }
     }
 
@@ -102,14 +104,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt = $mysqli->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
             $stmt->bind_param("sss", $param_username, $param_mail, $param_password);
-
+            
             // Set parameters
             $param_username = $username;
             $param_mail = $mail;
             $param_password = password_hash($password, PASSWORD_BCRYPT); // Creates a password hash
-
+            var_dump($stmt);
+            var_dump($param_username);
+            var_dump($param_mail);
+            var_dump($param_password);
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
+                var_dump("OK");
                 // Redirect to login page
                 header("location: ../view/login.php");
             } else {

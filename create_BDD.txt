@@ -1,18 +1,3 @@
 //Création d’une table de base de donnée USERS
 
-CREATE TABLE users ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, username VARCHAR(50) NOT NULL UNIQUE, mail VARCHAR(50) NOT NULL UNIQUE, password VARCHAR(255) NOT NULL, created_at DATETIME DEFAULT CURRENT_TIMESTAMP );
-
-//Création d’une table de base de donnée ADMIN
-
-CREATE TABLE `admins` (
-  `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `username` VARCHAR(50) NOT NULL UNIQUE,
-  `mail` VARCHAR(50) NOT NULL UNIQUE,
-  `password` VARCHAR(255) NOT NULL,
-  `role` enum('all','manage_posts') NOT NULL,
-   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-
-//Insérer un utilisateur dans la table ADMIN
-
-INSERT INTO `admins` (`id`, `username`, `mail`, `password`, `role`) VALUES (1, 'Erwan35', 'devbzh35@gmail.com', '$2y$10$/KkaqYLsBZ21FCrw.XNgSeNNfOic5turQPNMkyPfcYa/FM1jy8nHS', 'all');
+CREATE TABLE users ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, username VARCHAR(50) NOT NULL UNIQUE, mail VARCHAR(30) NOT NULL, password VARCHAR(255) NOT NULL, role VARCHAR(10) NOT NULL, created_at DATETIME DEFAULT CURRENT_TIMESTAMP );
