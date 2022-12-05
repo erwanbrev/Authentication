@@ -17,10 +17,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+/* body {
     background-color: var(--bg-dark);
     color: var(--bg-light);
-}
+} */
 
 /* one time declaration of a parameter for several classes */
 h1,

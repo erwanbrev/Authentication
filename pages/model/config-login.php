@@ -6,6 +6,9 @@ session_start();
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("location: ../view/home.php");
     exit;
+} elseif (isset($_SESSION["admin"]) && $_SESSION["admin"] === true) {
+    header("location: ../view/home-admin.php");
+    exit;
 }
 
 // Include config file
@@ -16,7 +19,6 @@ $mail = $password = "";
 $mail_err = $password_err = $login_err = "";
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     // Check if mail is empty
     if (empty(trim($_POST["mail"]))) {
         $mail_err = "Please enter mail.";
@@ -34,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate credentials
     if (empty($mail_err) && empty($password_err)) {
         // Prepare a select statement
-        $sql = "SELECT id, username, mail, password FROM users WHERE mail = ?";
+        $sql = "SELECT id, username, mail, password, role FROM users WHERE mail = ?";
 
         if ($stmt = $mysqli->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
@@ -51,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Check if mail exists, if yes then verify password
                 if ($stmt->num_rows == 1) {
                     // Bind result variables
-                    $stmt->bind_result($id, $username, $mail, $hashed_password);
+                    $stmt->bind_result($id, $username, $mail, $hashed_password, $role);
                     if ($stmt->fetch()) {
-                        if (password_verify($password, $hashed_password)) {
+                        if (password_verify($password, $hashed_password) && $role == "user") {
                             // Password is correct, so start a new session
                             session_start();
 
@@ -62,10 +64,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
                             $_SESSION["mail"] = $mail;
+                            $_SESSION["role"] = $role;
                             $_SESSION["login_time_stamp"] = time();
-
-                            // Redirect user to welcome page
                             header("location: ../view/home.php");
+                        } elseif (password_verify($password, $hashed_password) && $role == "admin") {
+                            // Password is correct, so start a new session
+                            session_start();
+
+                            // Store data in session variables
+                            $_SESSION["loggedin"] = true;
+                            $_SESSION["id"] = $id;
+                            $_SESSION["username"] = $username;
+                            $_SESSION["mail"] = $mail;
+                            $_SESSION["role"] = $role;
+                            $_SESSION["login_time_stamp"] = time();
+                            header("location: ../view/home-admin.php");
                         } else {
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid mail or password.";
@@ -87,4 +100,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Close connection
     $mysqli->close();
 }
-?>
