@@ -7,43 +7,54 @@ require_once "../controller/read-users.php";
 
 <head>
     <meta charset="UTF-8">
-    <title>View Record</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .wrapper {
-            width: 600px;
-            margin: 0 auto;
-        }
-    </style>
+    <title>View profile</title>
+    <link rel="stylesheet" href="../model/style.css">
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="mt-5 mb-3">View Record</h1>
-                    <div class="form-group">
+    <h1>View profile</h1>
+    <section>
+        <table>
+            <thead></thead>
+            <tbody>
+                <tr>
+                    <td>
                         <label>ID</label>
-                        <p><b><?php echo $row["id"]; ?></b></p>
-                    </div>
-                    <div class="form-group">
+                        <p><b>
+                                <?php echo $row["id"]; ?>
+                            </b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label>username</label>
-                        <p><b><?php echo $row["username"]; ?></b></p>
-                    </div>
-                    <div class="form-group">
+                        <p><b>
+                                <?php echo $row["username"]; ?>
+                            </b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label>mail</label>
-                        <p><b><?php echo $row["mail"]; ?></b></p>
-                    </div>
-                    <div class="form-group">
+                        <p><b>
+                                <?php echo $row["mail"]; ?>
+                            </b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label>role</label>
-                        <p><b><?php echo $row["role"]; ?></b></p>
-                    </div>
-                    <p><a href="../controller/admin-panel.php" class="btn btn-primary">Back</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
+                        <p><b>
+                                <?php echo $row["role"]; ?>
+                            </b></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button>
+            <a href="../controller/admin-panel.php">Cancel</a>
+        </button>
+    </section>
 </body>
 
 </html>

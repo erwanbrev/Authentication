@@ -17,8 +17,8 @@ require_once "../controller/delete-users.php";
         <form class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>" />
             <p>Are you sure you want to delete this user record?</p>
-            <button type="submit" value="Yes">Submit</button>
-            <button>
+            <button class="form-btn" type="submit" value="Yes">Submit</button>
+            <button class="form-btn" value="No">
                 <a href="../controller/admin-panel.php">No</a>
             </button>
         </form>
