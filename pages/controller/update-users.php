@@ -3,31 +3,31 @@
 require_once "../model/config.php";
 
 // Define variables and initialize with empty values
-$username = $mail = $password = $role = "";
-$username_err = $mail_err = $password_err = $role_err = "";
+$username = $mail = $role = "";
+$username_err = $mail_err = $role_err = "";
 
 // Processing form data when form is submitted
 if (isset($_POST["id"]) && !empty($_POST["id"])) {
     // Get hidden input value
     $id = $_POST["id"];
 
-    // Validation username.
+    // Username's validation.
     if (empty(trim($_POST["username"]))) {
-        $username_err = "Veuillez saisir un username.";
+        $username_err = "Please enter a username.";
     } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))) {
         $username_err = "Can only contain letters, numbers and underscores.";
     } else {
-        // Prépare un SELECT.
+        // new select to find id in user's table
         $sql = "SELECT id FROM users WHERE username = ?";
 
         if ($stmt = $mysqli->prepare($sql)) {
-            // Paramètre des variables.
+            // variable parameters
             $stmt->bind_param("s", $param_username);
 
             $param_username = trim($_POST["username"]);
 
             if ($stmt->execute()) {
-                // Stock le résultat.
+                // store the result
                 $stmt->store_result();
 
                 if ($stmt->num_rows == 1) {
@@ -39,26 +39,24 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                 echo "Oops! Something went wrong. Please try again later.";
             }
 
-            // Ferme la requête.
+            // Close the request
             $stmt->close();
         }
     }
 
-    // Validation mail.
+    // Mail's validation.
     if (empty(trim($_POST["mail"]))) {
         $mail_err = "Please enter an email.";
     } else {
-        // Prépare un SELECT.
+        // Select statement
         $sql = "SELECT id FROM users WHERE mail = ?";
-
         if ($stmt = $mysqli->prepare($sql)) {
-            // Paramètre des variables.
+
             $stmt->bind_param("s", $param_mail);
 
             $param_mail = trim($_POST["mail"]);
 
             if ($stmt->execute()) {
-                // Stock le résultat.
                 $stmt->store_result();
 
                 if ($stmt->num_rows == 1) {
@@ -69,22 +67,11 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
-
-            // Ferme la requête.
             $stmt->close();
         }
     }
 
-    // Validation mot de passe.
-    if (empty(trim($_POST["password"]))) {
-        $password_err = "PLease enter a password.";
-    } elseif (strlen(trim($_POST["password"])) < 8) {
-        $password_err = "The password must contain at least 8 characters.";
-    } else {
-        $password = trim($_POST["password"]);
-    }
-
-    // Validate role
+    // Role's validation
     $input_role = trim($_POST["role"]);
     if (empty($input_role)) {
         $role_err = "Please choose a role.";
@@ -92,36 +79,31 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         $role = $input_role;
     }
 
-    // Vérifie les erreurs des inputs avant de les insérer dans la base de donnée.
-    if (empty($username_err) && empty($mail_err) && empty($password_err) && empty($role_err)) {
+    // Checks inputs for errors before inserting them into the database.
+    if (empty($username_err) && empty($mail_err) && empty($role_err)) {
 
-        // Prépare un INSERT.
-        $sql = "UPDATE users SET username=?, mail=?, password=? role=? WHERE id=?";
+        $sql = "UPDATE users SET username=?, mail=?, role=? WHERE id=?";
 
         if ($stmt = $mysqli->prepare($sql)) {
-            // Paramètres des variables.
-            $stmt->bind_param("ssssi", $param_username, $param_mail, $param_password, $param_role, $param_id);
+            $stmt->bind_param("sssi", $param_username, $param_mail, $param_role, $param_id);
 
             $param_username = $username;
             $param_mail = $mail;
-            $param_password = password_hash($password, PASSWORD_BCRYPT);
             $param_role = $role;
             $param_id = $id;
 
             if ($stmt->execute()) {
-                // Redirige vers la page login.
+                // Redirect to login's page
                 header("location: ../controller/admin-panel.php");
                 exit();
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
 
-            // Ferme la requête.
             $stmt->close();
         }
     }
 
-    // Ferme la connexion.
     $mysqli->close();
 } else {
     // Check existence of id parameter before processing further
@@ -150,14 +132,12 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                     // Retrieve individual field value
                     $username = $row["username"];
                     $mail = $row["mail"];
-                    $password = $row["password"];
                     $role = $row["role"];
                 } else {
                     // URL doesn't contain valid id. Redirect to error page
                     header("location: error.php");
                     exit();
                 }
-
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -174,4 +154,3 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         exit();
     }
 }
-?>

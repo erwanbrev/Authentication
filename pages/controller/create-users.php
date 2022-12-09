@@ -3,29 +3,29 @@
 require_once "../model/config.php";
 
 // Define variables and initialize with empty values
-$username = $mail = $password = $role = "";
-$username_err = $mail_err = $password_err = $role_err = "";
+$username = $mail = $password = "";
+$username_err = $mail_err = $password_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validation username.
     if (empty(trim($_POST["username"]))) {
-        $username_err = "Veuillez saisir un username.";
+        $username_err = "Please enter a username.";
     } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))) {
         $username_err = "Can only contain letters, numbers and underscores.";
     } else {
-        // Prépare un SELECT.
+        // new select to find id in user's table
         $sql = "SELECT id FROM users WHERE username = ?";
 
         if ($stmt = $mysqli->prepare($sql)) {
-            // Paramètre des variables.
+            // variable parameters
             $stmt->bind_param("s", $param_username);
 
             $param_username = trim($_POST["username"]);
 
             if ($stmt->execute()) {
-                // Stock le résultat.
+                // store the result
                 $stmt->store_result();
 
                 if ($stmt->num_rows == 1) {
@@ -37,26 +37,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Oops! Something went wrong. Please try again later.";
             }
 
-            // Ferme la requête.
+            // Close the request
             $stmt->close();
         }
     }
 
-    // Validation mail.
+    // Mail's validation.
     if (empty(trim($_POST["mail"]))) {
         $mail_err = "Please enter an email.";
     } else {
-        // Prépare un SELECT.
         $sql = "SELECT id FROM users WHERE mail = ?";
 
         if ($stmt = $mysqli->prepare($sql)) {
-            // Paramètre des variables.
             $stmt->bind_param("s", $param_mail);
-
             $param_mail = trim($_POST["mail"]);
 
             if ($stmt->execute()) {
-                // Stock le résultat.
                 $stmt->store_result();
 
                 if ($stmt->num_rows == 1) {
@@ -67,43 +63,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
-
-            // Ferme la requête.
             $stmt->close();
         }
     }
 
-    // Validation mot de passe.
+    // Password's validation
     if (empty(trim($_POST["password"]))) {
-        $password_err = "PLease enter a password.";
+        $password_err = "Please enter a password.";
     } elseif (strlen(trim($_POST["password"])) < 8) {
         $password_err = "The password must contain at least 8 characters.";
     } else {
         $password = trim($_POST["password"]);
     }
 
-    // Validate role
-    $input_role = trim($_POST["role"]);
-    if (empty($input_role)) {
-        $role_err = "Please choose a role.";
-    } else {
-        $role = $input_role;
-    }
+    // Role's validation
+    // if (empty(trim($_POST["role"]))) {
+    //     $role_err = "Please choose a role.";
+    // } elseif ($role === "admin" || $role === "user") {
+    //     $role = trim($_POST["role"]);
+    // } else {
+    //     $role_err = "The role isn't choose.";
+    // }
 
-    // Vérifie les erreurs des inputs avant de les insérer dans la base de donnée.
-    if (empty($username_err) && empty($mail_err) && empty($password_err) && empty($role_err)) {
+    // Checks inputs for errors before inserting them into the database.
+    if (empty($username_err) && empty($mail_err) && empty($password_err)) {
 
-        // Prépare un INSERT.
-        $sql = "INSERT INTO users (username, mail, password, role) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, mail, password) VALUES (?, ?, ?)";
 
         if ($stmt = $mysqli->prepare($sql)) {
-            // Paramètres des variables.
-            $stmt->bind_param("ssss", $param_username, $param_mail, $param_password, $param_role);
+            $stmt->bind_param("sss", $param_username, $param_mail, $param_password);
 
             $param_username = $username;
             $param_mail = $mail;
             $param_password = password_hash($password, PASSWORD_BCRYPT);
-            $param_role = $role;
 
             if ($stmt->execute()) {
                 // Redirect to admin panel
@@ -111,13 +103,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
-
-            // Ferme la requête.
             $stmt->close();
         }
     }
-
-    // Ferme la connexion.
     $mysqli->close();
 }
-?>

@@ -9,7 +9,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 else {
     // 5 min = 5 x 60s = 300
-    if (time() - $_SESSION["login_time_stamp"] > 4) {
+    if (time() - $_SESSION["login_time_stamp"] > 60) {
         session_unset();
         session_destroy();
         $_SESSION["loggedin"] = false;

@@ -15,28 +15,17 @@ require_once "../controller/update-users.php";
     <section class="form-container">
         <form class="form" action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
             <label>Username</label>
-            <input type="text" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>"
-            value="
-            <?php echo $username; ?>">
+            <input type="text" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
             <span>
                 <?php echo $username_err; ?>
             </span>
             <label>Mail</label>
-            <input type="email" name="mail" <?php echo (!empty($mail_err)) ? 'is-invalid' : ''; ?>" value="
-            <?php echo $mail; ?>">
+            <input type="email" name="mail" <?php echo (!empty($mail_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $mail; ?>">
             <span>
                 <?php echo $mail_err; ?>
             </span>
-            <label>Password</label>
-            <input type="password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="
-            <?php echo $password; ?>">
-            <span>
-                <?php echo $password_err; ?>
-            </span>
             <label>Role</label>
-            <input type="text" name="role" <?php echo (!empty($role_err)) ? 'is-invalid' : ''; ?>"
-            value="
-            <?php echo $role; ?>">
+            <input type="text" name="role" <?php echo (!empty($role_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $role; ?>">
             <span>
                 <?php echo $role_err; ?>
             </span>
