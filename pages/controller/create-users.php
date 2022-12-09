@@ -3,8 +3,8 @@
 require_once "../model/config.php";
 
 // Define variables and initialize with empty values
-$username = $mail = $password = "";
-$username_err = $mail_err = $password_err = "";
+$username = $mail = $password = $role = "";
+$username_err = $mail_err = $password_err = $role_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -77,25 +77,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Role's validation
-    // if (empty(trim($_POST["role"]))) {
-    //     $role_err = "Please choose a role.";
-    // } elseif ($role === "admin" || $role === "user") {
-    //     $role = trim($_POST["role"]);
-    // } else {
-    //     $role_err = "The role isn't choose.";
-    // }
+    if (empty(trim($_POST["role"]))) {
+        $role_err = "Please enter a role.";
+    } else {
+        $role = trim($_POST["role"]);
+    }
 
     // Checks inputs for errors before inserting them into the database.
-    if (empty($username_err) && empty($mail_err) && empty($password_err)) {
+    if (empty($username_err) && empty($mail_err) && empty($password_err) && empty($role_err)) {
 
-        $sql = "INSERT INTO users (username, mail, password) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO users (username, mail, password, role) VALUES (?, ?, ?, ?)";
 
         if ($stmt = $mysqli->prepare($sql)) {
-            $stmt->bind_param("sss", $param_username, $param_mail, $param_password);
+            $stmt->bind_param("ssss", $param_username, $param_mail, $param_password, $param_role);
 
             $param_username = $username;
             $param_mail = $mail;
             $param_password = password_hash($password, PASSWORD_BCRYPT);
+            $param_role = $role;
 
             if ($stmt->execute()) {
                 // Redirect to admin panel

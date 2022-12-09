@@ -32,10 +32,13 @@ require_once "../controller/create-users.php";
                 <?php echo $password_err; ?>
             </span>
             <label>Role</label>
-            <select name="role">
+            <select name="role" <?php echo (!empty($role_err)) ? 'is-invalid' : ''; ?> value="<?php echo $role; ?>">
                 <option value="user">user</option>
                 <option value="admin">admin</option>
             </select>
+            <span>
+                <?php echo $role_err; ?>
+            </span>
             <button class="form-btn" type="submit" value="Submit">Submit</button>
             <button class="form-btn" value="Cancel">
                 <a href="../controller/admin-panel.php">Cancel</a>
