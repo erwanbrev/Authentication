@@ -10,7 +10,7 @@
 <body>
     <div>
         <h2>Users Details</h2>
-        <button class="admin-btn">
+        <button class="form-btn" id="admin-btn">
             <a href="../view/admin-panel-create.php"> Add New User</a>
         </button>
     </div>
@@ -39,7 +39,6 @@
                     <tr>
                 <?php
                                 while ($row = $result->fetch_array()) {
-                                    // echo "<tr>";
                                     echo "<td>" . $row['id'] . "</td>";
                                     echo "<td>" . $row['username'] . "</td>";
                                     echo "<td>" . $row['mail'] . "</td>";
@@ -50,12 +49,11 @@
                                     echo '<a href="../view/admin-panel-update.php?id=' . $row['id'] . ' title="Update Record" data-toggle="tooltip"><span>Update</span></a>';
                                     echo '<a href="../view/admin-panel-delete.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span>Delete</span></a>';
                                     echo "</td>";
-                                    echo "</tr>";
                                 }
                                 // Free result set
                                 $result->free();
                             } else {
-                                echo '<div><em>No records were found.</em></div>';
+                                echo '<div class="passwd_err">No records were found.</div>';
                             }
                         } else {
                             echo "Oops! Something went wrong. Please try again later.";

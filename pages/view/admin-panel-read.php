@@ -13,47 +13,46 @@ require_once "../controller/read-users.php";
 
 <body>
     <h1>View profile</h1>
-    <section>
-        <table>
-            <thead></thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <label>ID</label>
-                        <p><b>
-                                <?php echo $row["id"]; ?>
-                            </b></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>username</label>
-                        <p><b>
-                                <?php echo $row["username"]; ?>
-                            </b></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>mail</label>
-                        <p><b>
-                                <?php echo $row["mail"]; ?>
-                            </b></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>role</label>
-                        <p><b>
-                                <?php echo $row["role"]; ?>
-                            </b></p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <button>
-            <a href="../controller/admin-panel.php">Cancel</a>
-        </button>
+    <section class="tab-admin-panel">
+        <section class="inside-table-admin-panel">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <label>ID</label>
+                        </th>
+                        <th>
+                            <label>Username</label>
+                        </th>
+                        <th>
+                            <label>Mail</label>
+                        </th>
+                        <th>
+                            <label>Role</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <?php echo $row["id"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["username"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["mail"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["role"]; ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="form-btn">
+                <a href="../controller/admin-panel.php">Cancel</a>
+            </button>
+        </section>
     </section>
 </body>
 

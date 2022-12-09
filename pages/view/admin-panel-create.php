@@ -13,12 +13,11 @@ require_once "../controller/create-users.php";
 
 <body>
     <h2>Create Record</h2>
-    <p>Please fill this form and submit to add user record to the database.</p>
+    <p class="reset-pwd-p">Please fill this form and submit to add user record to the database.</p>
     <section class="form-container">
         <form class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <label>Username</label>
-            <input type="text" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>
-            value="
+            <input type="text" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?> value="
             <?php echo $username; ?>">
             <span>
                 <?php echo $username_err; ?>
@@ -36,8 +35,7 @@ require_once "../controller/create-users.php";
                 <?php echo $password_err; ?>
             </span>
             <label>Role</label>
-            <input type="text" name="role" <?php echo (!empty($role_err)) ? 'is-invalid' : ''; ?>"
-            value="
+            <input type="text" name="role" <?php echo (!empty($role_err)) ? 'is-invalid' : ''; ?>" value="
             <?php echo $role; ?>">
             <span>
                 <?php echo $role_err; ?>
