@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : lun. 05 déc. 2022 à 13:30
+-- Généré le : ven. 09 déc. 2022 à 13:31
 -- Version du serveur : 5.7.34
 -- Version de PHP : 8.0.8
 
@@ -41,8 +41,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `mail`, `password`, `role`, `created_at`) VALUES
-(1, 'Erwan35', 'devbzh35@gmail.com', '$2y$10$/KkaqYLsBZ21FCrw.XNgSeNNfOic5turQPNMkyPfcYa/FM1jy8nHS', 'admin', '2022-12-02 11:43:09'),
-(2, 'QuentinS', 'queu@gmail.com', '$2y$10$JFWw7v1kURJC3nQ8YogdtO/bA0g58M2X8h8VTfDuW2L4OWaRZt9Tm', 'user', '2022-12-05 14:29:21');
+(1, 'Erwan35', 'devbzh35@gmail.com', '$2y$10$/KkaqYLsBZ21FCrw.XNgSeNNfOic5turQPNMkyPfcYa/FM1jy8nHS', 'admin', '2022-12-02 11:43:09');
 
 --
 -- Index pour les tables déchargées

@@ -17,26 +17,25 @@ require_once "../controller/create-users.php";
     <section class="form-container">
         <form class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <label>Username</label>
-            <input type="text" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?> value="
-            <?php echo $username; ?>">
+            <input type="text" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>value="<?php echo $username; ?>">
             <span>
                 <?php echo $username_err; ?>
             </span>
             <label>Mail</label>
-            <input type="email" name="mail" <?php echo (!empty($mail_err)) ? 'is-invalid' : ''; ?>">
-            <?php echo $mail; ?>
+            <input type="email" name="mail" <?php echo (!empty($mail_err)) ? 'is-invalid' : ''; ?>value="<?php echo $mail; ?>">
             <span>
                 <?php echo $mail_err; ?>
             </span>
             <label>Password</label>
-            <input name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-            <?php echo $password; ?>
+            <input name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>value="<?php echo $password; ?>">
             <span>
                 <?php echo $password_err; ?>
             </span>
             <label>Role</label>
-            <input type="text" name="role" <?php echo (!empty($role_err)) ? 'is-invalid' : ''; ?>" value="
-            <?php echo $role; ?>">
+            <select name="role" <?php echo (!empty($role_err)) ? 'is-invalid' : ''; ?> value="<?php echo $role; ?>">
+                <option value="user">user</option>
+                <option value="admin">admin</option>
+            </select>
             <span>
                 <?php echo $role_err; ?>
             </span>

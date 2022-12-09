@@ -8,12 +8,10 @@
 </head>
 
 <body>
-    <div>
-        <h2>Users Details</h2>
-        <button class="form-btn" id="admin-btn">
-            <a href="../view/admin-panel-create.php"> Add New User</a>
-        </button>
-    </div>
+    <h2>Users Details</h2>
+    <button class="form-btn" id="admin-btn">
+        <a href="../view/admin-panel-create.php"> Add New User</a>
+    </button>
     <section class="tab-admin-panel">
         <section class="inside-table-admin-panel">
             <table>
@@ -36,9 +34,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                <?php
+            <?php
                                 while ($row = $result->fetch_array()) {
+                                    echo "<tr>";
                                     echo "<td>" . $row['id'] . "</td>";
                                     echo "<td>" . $row['username'] . "</td>";
                                     echo "<td>" . $row['mail'] . "</td>";
@@ -49,6 +47,7 @@
                                     echo '<a href="../view/admin-panel-update.php?id=' . $row['id'] . ' title="Update Record" data-toggle="tooltip"><span>Update</span></a>';
                                     echo '<a href="../view/admin-panel-delete.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span>Delete</span></a>';
                                     echo "</td>";
+                                    echo "</tr>";
                                 }
                                 // Free result set
                                 $result->free();
@@ -61,12 +60,14 @@
 
                         // Close connection
                         $mysqli->close();
-                ?>
-                    </tr>
+            ?>
                 </tbody>
             </table>
         </section>
     </section>
+    <button class="form-btn" id="admin-btn">
+        <a href="../view/home-admin.php">Cancel</a>
+    </button>
 </body>
 
 </html>

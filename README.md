@@ -11,8 +11,11 @@
 * Elle doit offrir un accès sécurisé au service, en fonction du rôle de l’utilisateur. 
   Deux rôles sont possibles:
   * admin: accès à toutes les pages avec droits d'ajout, suppression, modification
-  * user: accès aux pages user avec droits de modification (update)
-* Le système d’authentification doit être limité dans le temps. Un délai doit être fixé au déla duquel la page n’est plus accessible (par copier-coller du lien ou rafraichissement de la page) -->
+  * user: accès aux pages user avec droits de modification
+
+* Les capacités d'actions sur un profil utilisateur sont fait avec le principe du CRUD.
+
+* Le système d’authentification doit être limité dans le temps. Un délai doit être fixé au dela duquel la page n’est plus accessible (par copier-coller du lien ou rafraichissement de la page) -->
 # Authentication
 
 ### This is a project consisting in creating an API in PHP and MySQL allowing to register and to connect on a website.
@@ -28,5 +31,7 @@
 
   * admin: access to all pages with rights to add, delete, modify
   * user: access to user and guest pages with modification rights (update)
+
+* The action capabilities on a user profile are made with the CRUD principle.
 
 * The authentication system must be limited in time. A time limit must be set after which the page is no longer accessible (by copy-pasting the link or refreshing the page)
