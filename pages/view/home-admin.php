@@ -22,7 +22,7 @@ require_once "../model/config-home.php";
         </b>! Welcome to our site.</h2>
     <section class="main-container">
         <section class="left-main-container">
-            <a href="../controller/admin-panel.php">Redirect to admin panel</a>
+            <a href="../controller/admin-panel.php" target="_blank">Redirect to admin panel</a>
             <a href="passw-reset.php">Reset your password</a>
             <a href="../model/logout.php">Log Out</a>
         </section>

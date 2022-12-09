@@ -18,20 +18,16 @@ require_once "../model/config-passw-reset.php";
         <h2>Reset Password</h2>
         <p class="reset-pwd-p">Please fill out this form to reset your password.</p>
         <form id="reset-container" class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div>
-                <label>Ur new password</label>
-                <input type="password" name="new_password" <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
-                <span><?php echo $new_password_err; ?></span>
-            </div>
-            <div>
-                <label>Can you confirm ur password</label>
-                <input type="password" name="confirm_password" <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
-                <span><?php echo $confirm_password_err; ?></span>
-            </div>
-            <div>
-                <button type="submit" value="Submit">Reset</button>
+            <label>Ur new password</label>
+            <input type="password" name="new_password" <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
+            <span><?php echo $new_password_err; ?></span>
+            <label>Can you confirm ur password</label>
+            <input type="password" name="confirm_password" <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+            <span><?php echo $confirm_password_err; ?></span>
+            <button class="form-btn" type="submit" value="Submit">Reset</button>
+            <button class="form-btn">
                 <a href="../view/home.php">Cancel</a>
-            </div>
+            </button>
         </form>
     </section>
 </body>
